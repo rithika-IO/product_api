@@ -1,6 +1,9 @@
 package uk.ac.westminster.products_api;
 
 import org.springframework.stereotype.Service;
+import uk.ac.westminster.products_api.product.DigitalProduct;
+import uk.ac.westminster.products_api.product.PhysicalProduct;
+import uk.ac.westminster.products_api.product.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +12,7 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    private ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<Product> products= new ArrayList<>();
     private Long nextId = 1l;
 
     public List<Product> getAllProducts(){
@@ -25,6 +28,8 @@ public class ProductService {
     public Product addProduct(Product product){
         product.setId(nextId++);
         products.add(product);
+        products.add(new DigitalProduct(5L,"java basics",1500.00,"fghjk",58.5));
+        products.add(new PhysicalProduct(7L,"wireless mouse",14500.00,0.15,"null"));
         return product;
 
     }
